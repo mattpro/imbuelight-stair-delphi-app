@@ -14,19 +14,21 @@ object Form1: TForm1
   OnCreate = FormCreate
   TextHeight = 15
   object Memo1: TMemo
-    Left = 48
-    Top = 283
-    Width = 385
-    Height = 249
+    Left = 0
+    Top = 408
+    Width = 1008
+    Height = 363
+    Align = alBottom
     Lines.Strings = (
       'Memo1')
     TabOrder = 0
   end
   object GroupBox1: TGroupBox
-    Left = 8
-    Top = 8
-    Width = 641
-    Height = 241
+    Left = 0
+    Top = 0
+    Width = 1008
+    Height = 257
+    Align = alTop
     Caption = 'Bluetooth'
     TabOrder = 1
     object ButtonScan: TButton
@@ -34,17 +36,9 @@ object Form1: TForm1
       Top = 24
       Width = 75
       Height = 25
-      Caption = 'Scan'
+      Caption = 'Start scan'
       TabOrder = 0
       OnClick = ButtonScanClick
-    end
-    object ListBoxScannedDevices: TListBox
-      Left = 113
-      Top = 24
-      Width = 520
-      Height = 206
-      ItemHeight = 15
-      TabOrder = 1
     end
     object ButtonConnect: TButton
       Left = 16
@@ -52,26 +46,81 @@ object Form1: TForm1
       Width = 75
       Height = 25
       Caption = 'Connect'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = ButtonConnectClick
     end
-  end
-  object BluetoothLE1: TBluetoothLE
-    Enabled = True
-    OnConnectedDevice = BluetoothLE1ConnectedDevice
-    OnConnect = BluetoothLE1Connect
-    OnDiscoverLEDevice = BluetoothLE1DiscoverLEDevice
-    OnServicesDiscovered = BluetoothLE1ServicesDiscovered
-    OnEndDiscoverDevices = BluetoothLE1EndDiscoverDevices
-    OnEndDiscoverServices = BluetoothLE1EndDiscoverServices
-    Left = 840
-    Top = 64
+    object lvAdvertisements: TListView
+      Left = 113
+      Top = 24
+      Width = 1200
+      Height = 217
+      Columns = <
+        item
+          Caption = 'Server ID'
+          MinWidth = 10
+          Width = 90
+        end
+        item
+          Caption = 'Local Name'
+          MinWidth = 10
+          Width = 120
+        end
+        item
+          Caption = 'RSSI'
+          MinWidth = 10
+          Width = 40
+        end
+        item
+          Caption = 'TxPwr'
+          MinWidth = 10
+          Width = 45
+        end
+        item
+          Caption = 'Connectable'
+          MinWidth = 10
+          Width = 72
+        end
+        item
+          Caption = 'Service UUIDs'
+          MinWidth = 10
+          Width = 300
+        end
+        item
+          Caption = 'Services With Data'
+          MinWidth = 10
+          Width = 105
+        end
+        item
+          Caption = 'Mfr ID'
+          MinWidth = 10
+          Width = 60
+        end
+        item
+          Caption = 'Manufacturer Data'
+          MinWidth = 10
+          Width = 300
+        end>
+      RowSelect = True
+      TabOrder = 2
+      ViewStyle = vsReport
+      OnSelectItem = lvAdvertisementsSelectItem
+    end
+    object Button1: TButton
+      Left = 16
+      Top = 144
+      Width = 75
+      Height = 25
+      Caption = 'Read'
+      TabOrder = 3
+      OnClick = Button1Click
+    end
   end
   object iplBLEClient1: TiplBLEClient
     OnAdvertisement = iplBLEClient1Advertisement
     OnConnected = iplBLEClient1Connected
     OnDisconnected = iplBLEClient1Disconnected
     OnDiscovered = iplBLEClient1Discovered
+    OnValue = iplBLEClient1Value
     Left = 680
     Top = 296
   end
