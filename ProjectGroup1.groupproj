@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{C8CEAFBE-6A5A-4D34-B28F-9CBFEBF1D1C5}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="imbuelight_stair_app.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="C:\Users\Administrator\Documents\IPWorks BLE 2024 Delphi Edition\demos\Bluetooth LE Client\bleclient_12_Athens.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="imbuelight_stair_app">
+        <MSBuild Projects="imbuelight_stair_app.dproj"/>
+    </Target>
+    <Target Name="imbuelight_stair_app:Clean">
+        <MSBuild Projects="imbuelight_stair_app.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="imbuelight_stair_app:Make">
+        <MSBuild Projects="imbuelight_stair_app.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="bleclient_12_Athens">
+        <MSBuild Projects="C:\Users\Administrator\Documents\IPWorks BLE 2024 Delphi Edition\demos\Bluetooth LE Client\bleclient_12_Athens.dproj"/>
+    </Target>
+    <Target Name="bleclient_12_Athens:Clean">
+        <MSBuild Projects="C:\Users\Administrator\Documents\IPWorks BLE 2024 Delphi Edition\demos\Bluetooth LE Client\bleclient_12_Athens.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="bleclient_12_Athens:Make">
+        <MSBuild Projects="C:\Users\Administrator\Documents\IPWorks BLE 2024 Delphi Edition\demos\Bluetooth LE Client\bleclient_12_Athens.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="imbuelight_stair_app;bleclient_12_Athens"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="imbuelight_stair_app:Clean;bleclient_12_Athens:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="imbuelight_stair_app:Make;bleclient_12_Athens:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
